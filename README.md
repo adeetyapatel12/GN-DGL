@@ -25,10 +25,9 @@ If you find the code useful, please cite our paper.
    ```
     
    All the other commands are presented in [commands\.sh](Multilayer_GN_DGL/commands.sh)
+
+2. The [single_thread](single_thread) folder contains the code for reproducing the single thread results for different values of G, denoted by triangle in the following figures.
    
-   <br>
-2. The [single_thread](single_thread) folder contains the code for producing the single thread results for different values of G, denoted by * in the following figures.
-   To reproduce the results of single thread with different values of G:
    ```bash
    # ResNet-32:
    python train.py --dataset $dataset_name --model resnet --layers 32 --droprate 0.0 --cos_lr --local_module_num 1A  --groups $G --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --eval-ensemble --ensemble-type layerwise
