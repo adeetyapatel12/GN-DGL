@@ -1,11 +1,7 @@
 ## Local Learning with Neuron Groups
 This repository contains the code to reproduce the results presented in the paper [Local Learning with Neuron Groups](https://arxiv.org/abs/2301.07635).
 
-<p align="center">
-   <img src="ML_GN_DGL.png" width="450" height="300" alt="">
-</p>
-
-[comment]: <> (![GN-DGL]&#40;Figures/ML_GN_DGL.png&#41;)
+![GN-DGL](Figures/ML_GN_DGL.png)
 
 ## Citation
 If you find the code useful, please cite our paper.
@@ -55,9 +51,9 @@ in MACs for a given node in a distributed scenario for various local learning me
 ResNet-32x2 (right), the GN-DGL leads to better tradeoffs in training time versus accuracy. The size of the bubbles is proportional to the
 inference time of the models.
 
-##Contact
+## Contact
 If you have any questions, please do not hesitate to reach out to the authors. 
 <br><br>Adeetya Patel: adeetyapatel12@gmail.com.
 
-##Acknowledgments
+## Acknowledgments
 We would like to acknowledge that parts of the code were reused from the project [InfoPro](https://github.com/blackfeather-wang/InfoPro-Pytorch).
