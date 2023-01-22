@@ -1,22 +1,58 @@
-# resnet32 with cifar10 (different K and G combinations specified by "local_mod" and "group" variables)
+# ResNet32 + End-to-end (denoted as black square):
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 1 --groups 1 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
 
-datasets=('cifar10' 'cifar100' 'imagenet32')
+# ResNet32 + DGL (denoted as green):
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 2 --groups 1 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 4 --groups 1 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 8 --groups 1 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 16 --groups 1 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
 
-local_module_num=('1A' '2' '4')
-groups=(1 2 4 8)
+# ResNet32 + GN-DGL, K=1 (denoted as *)
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 1 --groups 2 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 1 --groups 4 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 1 --groups 8 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
 
-#local_module_num=('8')
-#groups=(1 2 4)
+# ResNet32 + GN-DGL, K>1, G=2 (denoted as blue circles)
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 2 --groups 2 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 4 --groups 2 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 8 --groups 2 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 16 --groups 2 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
 
-#local_module_num=('16')
-#groups=(1 2)
+# ResNet32 + GN-DGL, K>1, G=4 (denoted as yellow circles)
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 2 --groups 4 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 4 --groups 4 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 8 --groups 4 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
 
-for local_mod in "${local_module_num[@]}"
-do
-for group in "${groups[@]}"
-do
-for dataset in "${datasets[@]}"
-do
-python train.py --dataset $dataset --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num $local_mod --groups $group --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
-done
-done
+# ResNet32 + GN-DGL, K>1, G=8 (denoted in brown circles)
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 2 --groups 8 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 4 --groups 8 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 16,16,32,64 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+
+# ResNet32x2 + End-to-end (denoted as black square):
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 1 --groups 1 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+
+# ResNet32x2 + DGL (denoted as green):
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 2 --groups 1 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 4 --groups 1 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 8 --groups 1 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 16 --groups 1 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+
+# ResNet32x2 + GN-DGL, K=1 (denoted as *)
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 1 --groups 2 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 1 --groups 4 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 1 --groups 8 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+
+# ResNet32x2 + GN-DGL, K>1, G=2 (denoted as blue circles)
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 2 --groups 2 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 4 --groups 2 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 8 --groups 2 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 16 --groups 2 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+
+# ResNet32x2 + GN-DGL, K>1, G=4 (denoted as yellow circles)
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 2 --groups 4 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 4 --groups 4 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 8 --groups 4 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+
+# ResNet32x2 + GN-DGL, K>1, G=8 (denoted in brown circles)
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 2 --groups 8 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+python train.py --dataset cifar10 --model resnet --layers 32 --droprate 0.0 --cos_lr  --local_module_num 4 --groups 8 --local_loss_mode cross_entropy --aux_net_widen 1 --wide-list 32,32,64,128 --aux_net_feature_dim 128 --aux_net_config 1c2f --detach --detach-ratio 1.0 --div-reg --div-temp 3.0 --div-weight 0.5 --eval-ensemble --ensemble-type layerwise
+
