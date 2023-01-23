@@ -7,10 +7,10 @@ This repository contains the code to reproduce the results presented in the pape
 If you find the code useful, please cite our paper.
 ```
 @Article{patel2023local,
-  author  = {Adeetya Patel, Michael Eickenberg and Eugene Belilovsky},
-  journal = {arXiv:2301.07635},
-  title   = {Local Learning with Neuron Groups},
-  year    = {2023},
+  title={Local Learning with Neuron Groups},
+  author={Patel, Adeetya and Eickenberg, Michael and Belilovsky, Eugene},
+  journal={arXiv preprint arXiv:2301.07635},
+  year={2023}
 }
 ```
 ## Get Started
