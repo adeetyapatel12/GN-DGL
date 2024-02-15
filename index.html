@@ -5,23 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Published Paper Poster</title>
     <style>
-        body {
+        body, html {
+            height: 100%;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .poster-container {
+            width: auto; /* Adjust based on your needs */
+            max-width: 95%; /* Prevents the image from overflowing the viewport width */
+            max-height: 95vh; /* Limits the image height to be within the viewport */
+            overflow: auto; /* Adds scrollbars if the image is larger than the max dimensions */
+            border: 1px solid #ddd; /* Optional: Adds a border around the image */
+            border-radius: 4px; /* Optional: Rounds the corners of the border */
+            padding: 5px; /* Optional: Adds space between the border and the image */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a shadow for better visual separation */
+            background-color: #fff; /* Optional: Sets a background color for the container */
         }
         img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px;
+            max-width: 100%; /* Ensures the image is responsive and fits within its container */
+            height: auto; /* Maintains the image's aspect ratio */
         }
     </style>
 </head>
 <body>
-    <img src="Figures/ICLR2022_Cells2SocietiesWorkshop.png" alt="Poster for GN-DGL">
+    <div class="poster-container">
+        <img src="Figures/ICLR2022_Cells2SocietiesWorkshop.png" alt="Poster for GN-DGL">
+    </div>
 </body>
 </html>
